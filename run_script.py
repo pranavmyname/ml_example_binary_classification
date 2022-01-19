@@ -9,7 +9,8 @@ pd.options.display.max_columns = None
 import math 
 from scipy import signal
 import json
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.linear_model import LogisticRegression
+
 from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import roc_curve, precision_recall_curve, auc, make_scorer, recall_score, accuracy_score, precision_score, confusion_matrix
@@ -41,10 +42,8 @@ def grid_search_fun(clf, parameters, scorer, X_train, y_train):
     
     return clf_best, estimators.best_params_
 
-parameters = {'min_samples_split': [3, 5, 10, 15, 20, 30], 
-    'max_depth': [3, 5, 10, 15, 25],
-    'max_features': [3, 5, 15, 20, 30, 50],
-    'class_weight': ["balanced", None]}
+clf = LogisticRegression(random_state=0)
+parameters = {'C': [0.1, 0.5, 1]}
 
 train_df_norm = (train_df-train_df.mean())/train_df.std()
 train_df_norm.head()
@@ -54,7 +53,6 @@ X_train = train_df_norm.drop(["Y"], axis =1)
 test_df_norm = (test_df-test_df.mean())/test_df.std()
 X_test = test_df_norm.values
 
-clf = DecisionTreeClassifier(random_state=0, criterion='entropy')
 clf, best_param = grid_search_fun(clf, parameters, 'accuracy_score', X_train, y_train)
 
 y_pred = clf.predict(X_test)
