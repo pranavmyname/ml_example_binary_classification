@@ -1,14 +1,8 @@
 import numpy as np
 import matplotlib.pylab as plt
 plt.rcParams['axes.grid'] = True
-import scipy.io
-from scipy.fft import fft, fftfreq
-from scipy.stats import entropy, skew
 import pandas as pd
 pd.options.display.max_columns = None
-import math 
-from scipy import signal
-import json
 from sklearn.linear_model import LogisticRegression
 
 from sklearn.model_selection import cross_val_score

@@ -1,15 +1,16 @@
+## Introduction
 
+The dataset provided is a training and test dataset. There are a total of 3910 rows or entries in the training set and 57 feature columns and a target column. Target is either 0 or 1 and is therefore a binary classification problem. 
+
+The analysis written in this readme has been drawn from the experiments performed in notebook.ipynb file. A logistic regression model can be on the test dataset using the run_scripy.py file.
 
 ## Dataset Analysis
-An initial look at the dataset suggests that it is a sparse dataset. That means each new entry in the dataset interacts with only a small number of features. It can also be safely assumed that since every new event deals with a limited number of features, it is not a time-series data and each row can be considered independent of each other.
-It was also seen that the data does not follow a linear model and therefore, nonlinear numerical methods need to be employed to classify an event between the two classes.
+An initial look at the dataset suggests that it is a sparse dataset. That means each new entry in the dataset interacts with only a small number of features. It can also be safely assumed that since every new event deals with a limited number of features, it is not a time-series data and each row can be considered independent of each other.  Different columns appears to be a risk category of some nature. It was also seen that the data does not follow a linear model and therefore, nonlinear numerical methods need to be employed to classify an event between the two classes.
 
 ### Dimensionality reduction
-#### PCA
-PCA suggests that most of the information in the data is contained in three reduced dimensional feature set. It is also seen that into the projected subspace, features with maximum variance are not linearly seperable and have too much overlap in between the two classes that is 0 and 1. Therefore, other non-linear techniques need to be applied to decide whether the dataset can be classified or not. 
 
-### Normalization
-Upon normalizing the dataset using mean and standard deviation of each column, it can be seen that the reduced feature set are much better seperated in between the two classes
+### PCA
+Upon normalizing the dataset using mean and standard deviation of each column, it can be seen that the reduced feature after applying PCA set are much better seperated in between the two classes. 
 
 #### LDA
 With LDA, we see that a linear projection into a subspace is possible where the two classes are seperated with one class being centered around a mean of 2 and the other one around a mean of -2
