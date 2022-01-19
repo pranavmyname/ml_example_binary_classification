@@ -9,15 +9,10 @@ pd.options.display.max_columns = None
 import math 
 from scipy import signal
 import json
-from IPython.display import Image  
-from six import StringIO
-from sklearn.tree import export_graphviz
-import pydot 
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import roc_curve, precision_recall_curve, auc, make_scorer, recall_score, accuracy_score, precision_score, confusion_matrix
-from filter_fun import custom_filters
 
 train_df = pd.read_csv("data/training_set.csv")
 train_df.drop(columns=train_df.columns[0], 
